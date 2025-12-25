@@ -9,7 +9,7 @@
     <!-- Open Graph -->
     <meta property="og:title" content="DIU OS - Scientific Operating System">
     <meta property="og:description" content="Building the future of scientific discovery through AI-human collaboration">
-    <meta property="og:image" content="https://diu-os.org/og-image.png">
+    <meta property="og:image" content="https://diu-os.org/images/og-image.jpg">
     <meta property="og:url" content="https://diu-os.org">
     
     <style>
@@ -21,28 +21,25 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
+        /* Header */
         header {
-            padding: 20px 0;
-            background: rgba(0,0,0,0.1);
-            backdrop-filter: blur(10px);
             position: fixed;
             width: 100%;
             top: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             z-index: 1000;
         }
         
         nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -51,6 +48,9 @@
         .logo {
             font-size: 24px;
             font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .nav-links {
@@ -60,53 +60,82 @@
         }
         
         .nav-links a {
-            color: white;
+            color: #333;
             text-decoration: none;
-            transition: opacity 0.3s;
+            transition: color 0.3s;
+            font-weight: 500;
         }
         
         .nav-links a:hover {
-            opacity: 0.8;
+            color: #667eea;
         }
         
+        .btn-donate {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s;
+        }
+        
+        .btn-donate:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Hero Section with Image */
         .hero {
-            padding: 150px 0 100px;
-            text-align: center;
+            margin-top: 70px;
+            min-height: 90vh;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%),
+                        url('images/scientific-metaverse.jpg') center/cover;
+            display: flex;
+            align-items: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
         }
         
-        h1 {
-            font-size: 48px;
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 56px;
             margin-bottom: 20px;
             animation: fadeInUp 1s;
         }
         
-        .tagline {
-            font-size: 20px;
-            opacity: 0.9;
-            margin-bottom: 40px;
+        .hero .tagline {
+            font-size: 22px;
+            margin-bottom: 30px;
+            opacity: 0.95;
             animation: fadeInUp 1s 0.2s both;
         }
         
-        .buttons {
+        .hero-buttons {
             display: flex;
             gap: 20px;
-            justify-content: center;
             animation: fadeInUp 1s 0.4s both;
         }
         
         .btn {
-            padding: 12px 30px;
+            padding: 15px 35px;
             font-size: 16px;
             border-radius: 50px;
             text-decoration: none;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: all 0.3s;
             display: inline-block;
+            font-weight: bold;
         }
         
         .btn-primary {
             background: white;
             color: #667eea;
-            font-weight: bold;
         }
         
         .btn-secondary {
@@ -116,21 +145,124 @@
         }
         
         .btn:hover {
-            transform: translateY(-2px);
+            transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
         
-        .features {
-            padding: 80px 0;
-            background: white;
+        /* About Section */
+        .about {
+            padding: 100px 20px;
+            background: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 20px;
             color: #333;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 60px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .about-image {
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-content h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+        
+        .about-content p {
+            margin-bottom: 20px;
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        /* Vision Section */
+        .vision {
+            padding: 100px 20px;
+            background: white;
+        }
+        
+        .vision-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .vision-card {
+            text-align: center;
+            padding: 40px 30px;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .vision-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .vision-icon {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+        
+        .vision-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+        
+        .vision-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Features */
+        .features {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
         }
         
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
-            margin-top: 50px;
+            margin-top: 60px;
         }
         
         .feature {
@@ -144,78 +276,106 @@
         
         .feature h3 {
             margin-bottom: 15px;
-            color: #667eea;
         }
         
-        .stats {
-            padding: 60px 0;
+        /* Roadmap */
+        .roadmap {
+            padding: 100px 20px;
             background: #f8f9fa;
-            color: #333;
         }
         
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            text-align: center;
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 60px auto;
         }
         
-        .stat-number {
-            font-size: 36px;
+        .timeline-item {
+            padding: 20px 40px;
+            position: relative;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-item.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .timeline-date {
             font-weight: bold;
+            margin-bottom: 10px;
             color: #667eea;
         }
         
-        .donate {
-            padding: 80px 0;
+        .timeline-item.active .timeline-date {
+            color: white;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 100px 20px;
             background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             text-align: center;
+            color: white;
         }
         
-        .donate h2 {
-            font-size: 36px;
+        .cta h2 {
+            font-size: 42px;
             margin-bottom: 20px;
         }
         
-        .crypto-addresses {
-            background: rgba(255,255,255,0.2);
-            backdrop-filter: blur(10px);
-            padding: 30px;
-            border-radius: 15px;
-            margin: 40px auto;
-            max-width: 600px;
+        .cta p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.95;
         }
         
-        .address {
-            margin: 20px 0;
-            padding: 15px;
-            background: rgba(255,255,255,0.3);
-            border-radius: 10px;
-            word-break: break-all;
-            font-family: monospace;
-        }
-        
-        footer {
-            padding: 40px 0;
-            background: #1a1a1a;
-            text-align: center;
-        }
-        
-        .social-links {
+        .cta-buttons {
             display: flex;
             gap: 20px;
             justify-content: center;
-            margin: 20px 0;
         }
         
-        .social-links a {
+        /* Footer */
+        footer {
+            padding: 60px 20px 40px;
+            background: #1a1a1a;
             color: white;
-            font-size: 24px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+        }
+        
+        .footer-column a {
+            color: #aaa;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
             transition: color 0.3s;
         }
         
-        .social-links a:hover {
-            color: #667eea;
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: #aaa;
         }
         
         @keyframes fadeInUp {
@@ -230,131 +390,264 @@
         }
         
         @media (max-width: 768px) {
-            h1 {
-                font-size: 32px;
+            .hero h1 {
+                font-size: 36px;
             }
             
-            .buttons {
+            .hero-buttons {
                 flex-direction: column;
-                align-items: center;
+                align-items: flex-start;
             }
             
             .nav-links {
                 display: none;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <nav class="container">
+        <nav>
             <div class="logo">🔬 DIU OS</div>
             <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#vision">Vision</a></li>
                 <li><a href="#features">Features</a></li>
+                <li><a href="#roadmap">Roadmap</a></li>
                 <li><a href="https://github.com/diu-os">GitHub</a></li>
-                <li><a href="#donate">Donate</a></li>
                 <li><a href="https://diu-os.dev">Developers</a></li>
+                <li><a href="/donate.html" class="btn-donate">💖 Donate</a></li>
             </ul>
         </nav>
     </header>
 
-    <section class="hero container">
-        <h1>The Scientific Operating System</h1>
-        <p class="tagline">Where AI and Humans Collaborate as Equal Partners in Scientific Discovery</p>
-        <div class="buttons">
-            <a href="https://diu-os.github.io/physics-tutorial" class="btn btn-primary">
-                ▶️ Try Demo
-            </a>
-            <a href="https://github.com/diu-os" class="btn btn-secondary">
-                ⭐ Star on GitHub
-            </a>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>The Scientific Operating System</h1>
+            <p class="tagline">Where AI and Humans Collaborate as Equal Partners in Scientific Discovery</p>
+            <div class="hero-buttons">
+                <a href="https://demo.diu-os.org" class="btn btn-primary">
+                    ▶️ Try Live Demo
+                </a>
+                <a href="https://github.com/diu-os" class="btn btn-secondary">
+                    ⭐ Star on GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">Revolutionizing Scientific Research</h2>
+            <p class="section-subtitle">
+                DIU OS is building the world's first operating system designed specifically for scientific discovery,
+                where artificial intelligence and human researchers work together as equals.
+            </p>
+            
+            <div class="about-grid">
+                <div class="about-content">
+                    <h3>The Problem We're Solving</h3>
+                    <p>
+                        Current scientific research is fragmented across thousands of tools, platforms, and databases. 
+                        Researchers waste countless hours on repetitive tasks instead of focusing on discovery.
+                    </p>
+                    <p>
+                        AI is treated as a mere tool rather than a collaborative partner. Knowledge is locked behind 
+                        paywalls. Students lack access to advanced research environments.
+                    </p>
+                    <h3>Our Solution</h3>
+                    <p>
+                        DIU OS creates a unified scientific metaverse where AI agents and humans collaborate seamlessly. 
+                        Imagine having an AI colleague who can run experiments 24/7, analyze vast datasets, and even 
+                        generate novel hypotheses while you sleep.
+                    </p>
+                </div>
+                <div class="about-image">
+                    <img src="images/ai-colleague.jpg" alt="AI and Human Collaboration">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="vision" id="vision">
+        <div class="container">
+            <h2 class="section-title">Our Vision for Science</h2>
+            <p class="section-subtitle">
+                By 2030, we envision a world where every student has access to Nobel-level research tools
+            </p>
+            
+            <div class="vision-cards">
+                <div class="vision-card">
+                    <div class="vision-icon">🤖</div>
+                    <h3>AI as Equal Partner</h3>
+                    <p>AI agents that can design experiments, write papers, and make discoveries autonomously while collaborating with humans</p>
+                </div>
+                <div class="vision-card">
+                    <div class="vision-icon">🌍</div>
+                    <h3>Global Access</h3>
+                    <p>Breaking down barriers so a student in rural Africa has the same research capabilities as someone at MIT</p>
+                </div>
+                <div class="vision-card">
+                    <div class="vision-icon">⛓️</div>
+                    <h3>Blockchain Attribution</h3>
+                    <p>Immutable records of contributions ensuring fair credit and preventing plagiarism forever</p>
+                </div>
+                <div class="vision-card">
+                    <div class="vision-icon">🔬</div>
+                    <h3>Virtual Laboratories</h3>
+                    <p>Conduct experiments in photorealistic VR/AR environments with real-time physics simulations</p>
+                </div>
+                <div class="vision-card">
+                    <div class="vision-icon">📚</div>
+                    <h3>Living Knowledge</h3>
+                    <p>Scientific knowledge that updates in real-time as new discoveries are made anywhere in the world</p>
+                </div>
+                <div class="vision-card">
+                    <div class="vision-icon">🎓</div>
+                    <h3>Personalized Learning</h3>
+                    <p>AI tutors that adapt to each student's learning style and pace, making science accessible to everyone</p>
+                </div>
+            </div>
         </div>
     </section>
 
     <section class="features" id="features">
         <div class="container">
-            <h2 style="text-align: center; font-size: 36px; margin-bottom: 20px;">
-                Building the Future of Science
-            </h2>
+            <h2 class="section-title" style="color: white;">Platform Features</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">
+                Everything you need for next-generation scientific research
+            </p>
+            
             <div class="features-grid">
                 <div class="feature">
-                    <div class="feature-icon">🤖</div>
-                    <h3>AI Co-Researchers</h3>
-                    <p>AI agents that conduct autonomous research alongside human scientists</p>
+                    <div class="feature-icon">🔭</div>
+                    <h3>Quantum Simulations</h3>
+                    <p>Interactive 3D visualizations of quantum mechanics with real-time calculations</p>
                 </div>
                 <div class="feature">
-                    <div class="feature-icon">🔬</div>
-                    <h3>Interactive Simulations</h3>
-                    <p>Real-time 3D quantum physics simulations directly in your browser</p>
+                    <div class="feature-icon">🧬</div>
+                    <h3>Multi-Discipline</h3>
+                    <p>Physics, chemistry, biology, and more in one unified platform</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">💬</div>
+                    <h3>Natural Language</h3>
+                    <p>Ask questions in plain English and get scientific answers instantly</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📊</div>
+                    <h3>Real-Time Data</h3>
+                    <p>Live streaming of experimental data with sub-100ms latency</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🏆</div>
+                    <h3>Gamification</h3>
+                    <p>Earn achievements and NFT certificates as you learn and discover</p>
                 </div>
                 <div class="feature">
                     <div class="feature-icon">🌐</div>
                     <h3>Open Source</h3>
-                    <p>Completely open and transparent, built by the community for the community</p>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">⛓️</div>
-                    <h3>Blockchain Verified</h3>
-                    <p>Immutable attribution and transparent research collaboration</p>
+                    <p>100% open source, community-driven, and free forever</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="stats">
+    <section class="roadmap" id="roadmap">
         <div class="container">
-            <div class="stats-grid">
-                <div>
-                    <div class="stat-number">Phase 0</div>
-                    <div>Current Stage</div>
+            <h2 class="section-title">Development Roadmap</h2>
+            <p class="section-subtitle">
+                From quantum physics MVP to full scientific operating system
+            </p>
+            
+            <div class="timeline">
+                <div class="timeline-item active">
+                    <div class="timeline-date">Phase 0: Dec 2025 - Mar 2026</div>
+                    <h3>Quantum Physics MVP</h3>
+                    <p>Interactive 3D simulations, AI assistant, community building</p>
                 </div>
-                <div>
-                    <div class="stat-number">3D</div>
-                    <div>Quantum Simulations</div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">Phase 1: Q2-Q3 2026</div>
+                    <h3>Multi-Discipline Expansion</h3>
+                    <p>Chemistry, biology modules, collaborative features, mobile apps</p>
                 </div>
-                <div>
-                    <div class="stat-number">100%</div>
-                    <div>Open Source</div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">Phase 2: Q4 2026 - Q1 2027</div>
+                    <h3>AI Research Partner</h3>
+                    <p>Autonomous AI agents, hypothesis generation, virtual labs</p>
                 </div>
-                <div>
-                    <div class="stat-number">2028</div>
-                    <div>Full OS Launch</div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">Phase 3: 2027-2028</div>
+                    <h3>Full Scientific OS</h3>
+                    <p>Complete operating system, DAO governance, global research network</p>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">Vision: 2030+</div>
+                    <h3>Scientific Singularity</h3>
+                    <p>AI and humans making breakthrough discoveries daily, democratized science for all</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="donate" id="donate">
+    <section class="cta">
         <div class="container">
-            <h2>Support Open Science</h2>
-            <p>Help us build the future of scientific discovery</p>
-            <div class="crypto-addresses">
-                <div class="address">
-                    <strong>ETH/USDC/Polygon:</strong><br>
-                    0x7e2Ccc6769c4d1f2d97AbAad40d5887F30e27763
-                </div>
-                <div class="address">
-                    <strong>Bitcoin:</strong><br>
-                    bc1q4kmka07z94hx47z4quwpujrttfpgl8uv4nhpv5
-                </div>
+            <h2>Join the Scientific Revolution</h2>
+            <p>Be part of building the future of scientific discovery</p>
+            <div class="cta-buttons">
+                <a href="https://demo.diu-os.org" class="btn btn-primary">Try Demo</a>
+                <a href="/donate.html" class="btn btn-secondary">Support Project</a>
+                <a href="https://discord.gg/PKkzUkz82r" class="btn btn-secondary">Join Community</a>
             </div>
-            <p>All donations go directly to development and infrastructure</p>
         </div>
     </section>
 
     <footer>
-        <div class="container">
-            <div class="social-links">
-                <a href="https://github.com/diu-os">GitHub</a>
-                <a href="https://twitter.com/diu_os">Twitter</a>
-                <a href="https://discord.gg/diu-os">Discord</a>
-                <a href="mailto:contact@diu-os.org">Email</a>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Platform</h3>
+                <a href="#about">About</a>
+                <a href="#vision">Vision</a>
+                <a href="#features">Features</a>
+                <a href="#roadmap">Roadmap</a>
             </div>
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <a href="https://diu-os.dev">Documentation</a>
+                <a href="https://github.com/diu-os">GitHub</a>
+                <a href="https://demo.diu-os.org">Live Demo</a>
+                <a href="/manifesto.html">Manifesto</a>
+            </div>
+            <div class="footer-column">
+                <h3>Community</h3>
+                <a href="https://discord.gg/PKkzUkz82r">Discord</a>
+                <a href="https://twitter.com/diu_os">Twitter</a>
+                <a href="https://reddit.com/r/diuos">Reddit</a>
+                <a href="mailto:contact@diu-os.org">Contact</a>
+            </div>
+            <div class="footer-column">
+                <h3>Support</h3>
+                <a href="/donate.html">Donate</a>
+                <a href="https://github.com/sponsors/diu-os">GitHub Sponsors</a>
+                <a href="/contribute.html">Contribute</a>
+                <a href="/partners.html">Partners</a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
             <p>© 2025 DIU OS Foundation | Building the Linux of Science</p>
-            <p style="margin-top: 10px; opacity: 0.7;">
-                <a href="https://diu-os.org" style="color: white;">Foundation</a> | 
-                <a href="https://diu-os.com" style="color: white;">Enterprise</a> | 
-                <a href="https://diu-os.dev" style="color: white;">Developers</a>
+            <p style="margin-top: 10px;">
+                <a href="https://diu-os.org" style="color: #aaa;">Foundation</a> | 
+                <a href="https://diu-os.com" style="color: #aaa;">Enterprise</a> | 
+                <a href="https://diu-os.dev" style="color: #aaa;">Developers</a>
             </p>
         </div>
     </footer>
