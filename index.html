@@ -21,8 +21,87 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            color: #333;
+            color: white;
             line-height: 1.6;
+            background: #0a0a1f;
+            overflow-x: hidden;
+        }
+        
+        /* Animated Cosmic Background */
+        .cosmic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(to bottom, #0a0a1f 0%, #1a1a3e 50%, #0f0f2e 100%);
+            overflow: hidden;
+        }
+        
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+                radial-gradient(2px 2px at 40px 70px, #ccc, transparent),
+                radial-gradient(1px 1px at 50px 50px, #ddd, transparent),
+                radial-gradient(1px 1px at 80px 10px, #fff, transparent),
+                radial-gradient(2px 2px at 130px 80px, #fff, transparent);
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            animation: stars 120s linear infinite;
+            opacity: 0.8;
+        }
+        
+        .nebula {
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(ellipse at center, 
+                rgba(138, 43, 226, 0.1) 0%, 
+                rgba(30, 144, 255, 0.05) 40%, 
+                transparent 70%);
+            animation: nebula 200s ease-in-out infinite;
+        }
+        
+        .molecules {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .molecule {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            opacity: 0.3;
+            animation: float 20s infinite ease-in-out;
+        }
+        
+        .molecule svg {
+            width: 100%;
+            height: 100%;
+            fill: none;
+            stroke: rgba(100, 200, 255, 0.5);
+            stroke-width: 2;
+        }
+        
+        @keyframes stars {
+            from { transform: translateX(0); }
+            to { transform: translateX(-200px); }
+        }
+        
+        @keyframes nebula {
+            0%, 100% { transform: rotate(0deg) scale(1); opacity: 0.3; }
+            50% { transform: rotate(180deg) scale(1.5); opacity: 0.5; }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0) rotate(0deg); }
+            33% { transform: translateY(-30px) translateX(30px) rotate(120deg); }
+            66% { transform: translateY(30px) translateX(-20px) rotate(240deg); }
         }
         
         /* Header */
@@ -30,9 +109,9 @@
             position: fixed;
             width: 100%;
             top: 0;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(10, 10, 31, 0.8);
             backdrop-filter: blur(10px);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-bottom: 1px solid rgba(100, 150, 255, 0.2);
             z-index: 1000;
         }
         
@@ -60,14 +139,30 @@
         }
         
         .nav-links a {
-            color: #333;
+            color: rgba(255, 255, 255, 0.9);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: all 0.3s;
             font-weight: 500;
+            position: relative;
         }
         
         .nav-links a:hover {
             color: #667eea;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
         }
         
         .btn-donate {
@@ -77,43 +172,68 @@
             border-radius: 25px;
             text-decoration: none;
             font-weight: bold;
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         
         .btn-donate:hover {
             transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(240, 147, 251, 0.4);
         }
         
-        /* Hero Section with Image */
+        /* Hero Section with First Image */
         .hero {
             margin-top: 70px;
-            min-height: 90vh;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%),
-                        url('images/scientific-metaverse.jpg') center/cover;
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            color: white;
             position: relative;
             overflow: hidden;
+        }
+        
+        .hero-bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/scientific-metaverse.jpg') center/cover;
+            opacity: 0.3; /* Reduced opacity for clarity */
+            z-index: 1;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(10, 10, 31, 0.7) 0%, 
+                rgba(26, 26, 62, 0.5) 100%);
+            z-index: 2;
         }
         
         .hero-content {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
-            z-index: 2;
+            z-index: 3;
+            position: relative;
         }
         
         .hero h1 {
-            font-size: 56px;
+            font-size: 64px;
             margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, #667eea 50%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             animation: fadeInUp 1s;
         }
         
         .hero .tagline {
-            font-size: 22px;
-            margin-bottom: 30px;
-            opacity: 0.95;
+            font-size: 24px;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.9);
             animation: fadeInUp 1s 0.2s both;
         }
         
@@ -131,46 +251,81 @@
             transition: all 0.3s;
             display: inline-block;
             font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: translate(-50%, -50%);
+            transition: width 0.5s, height 0.5s;
+        }
+        
+        .btn:hover::before {
+            width: 300px;
+            height: 300px;
         }
         
         .btn-primary {
-            background: white;
-            color: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
         }
         
         .btn-secondary {
             background: transparent;
             color: white;
-            border: 2px solid white;
+            border: 2px solid rgba(255, 255, 255, 0.5);
         }
         
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
         }
         
-        /* About Section */
+        /* Glass Card Style */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+        
+        /* About Section with Second Image */
         .about {
             padding: 100px 20px;
-            background: #f8f9fa;
+            position: relative;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
         
         .section-title {
             text-align: center;
-            font-size: 42px;
+            font-size: 48px;
             margin-bottom: 20px;
-            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .section-subtitle {
             text-align: center;
-            font-size: 18px;
-            color: #666;
+            font-size: 20px;
+            color: rgba(255, 255, 255, 0.8);
             margin-bottom: 60px;
             max-width: 700px;
             margin-left: auto;
@@ -184,104 +339,143 @@
             align-items: center;
         }
         
-        .about-image {
-            width: 100%;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-        }
-        
-        .about-image img {
-            width: 100%;
-            height: auto;
-            display: block;
+        .about-content {
+            animation: fadeInLeft 1s;
         }
         
         .about-content h3 {
-            font-size: 28px;
+            font-size: 32px;
             margin-bottom: 20px;
             color: #667eea;
         }
         
         .about-content p {
             margin-bottom: 20px;
-            color: #555;
+            color: rgba(255, 255, 255, 0.9);
             line-height: 1.8;
+        }
+        
+        .about-image {
+            position: relative;
+            animation: fadeInRight 1s;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+        }
+        
+        .floating-molecules {
+            position: absolute;
+            top: -50px;
+            right: -50px;
+            width: 150px;
+            height: 150px;
+            opacity: 0.5;
+            animation: float 15s infinite ease-in-out;
         }
         
         /* Vision Section */
         .vision {
             padding: 100px 20px;
-            background: white;
+            position: relative;
         }
         
         .vision-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
+            gap: 30px;
             margin-top: 60px;
         }
         
         .vision-card {
             text-align: center;
             padding: 40px 30px;
-            background: #fff;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         
         .vision-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
         }
         
         .vision-icon {
             font-size: 64px;
             margin-bottom: 20px;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
         
         .vision-card h3 {
             font-size: 24px;
             margin-bottom: 15px;
-            color: #333;
+            color: #667eea;
         }
         
         .vision-card p {
-            color: #666;
+            color: rgba(255, 255, 255, 0.8);
             line-height: 1.6;
         }
         
-        /* Features */
+        /* Features Section with Third Image */
         .features {
             padding: 100px 20px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            position: relative;
+        }
+        
+        .features-bg-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/solution.jpg') center/cover;
+            opacity: 0.15;
+            z-index: 1;
+        }
+        
+        .features-content {
+            position: relative;
+            z-index: 2;
         }
         
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
+            gap: 30px;
             margin-top: 60px;
         }
         
         .feature {
             text-align: center;
+            padding: 30px 20px;
         }
         
         .feature-icon {
             font-size: 48px;
             margin-bottom: 20px;
+            filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.5));
         }
         
         .feature h3 {
             margin-bottom: 15px;
+            color: #667eea;
+        }
+        
+        .feature p {
+            color: rgba(255, 255, 255, 0.8);
         }
         
         /* Roadmap */
         .roadmap {
             padding: 100px 20px;
-            background: #f8f9fa;
+            position: relative;
         }
         
         .timeline {
@@ -290,18 +484,53 @@
             margin: 60px auto;
         }
         
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+            transform: translateX(-50%);
+        }
+        
         .timeline-item {
             padding: 20px 40px;
             position: relative;
-            background: white;
-            border-radius: 10px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 50px;
+            width: calc(50% - 40px);
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: calc(50% + 40px);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #667eea;
+            border-radius: 50%;
+            top: 30px;
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+        }
+        
+        .timeline-item:nth-child(odd)::before {
+            right: -50px;
+        }
+        
+        .timeline-item:nth-child(even)::before {
+            left: -50px;
         }
         
         .timeline-item.active {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
         }
         
         .timeline-date {
@@ -310,40 +539,40 @@
             color: #667eea;
         }
         
-        .timeline-item.active .timeline-date {
-            color: white;
-        }
-        
         /* CTA Section */
         .cta {
             padding: 100px 20px;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
             text-align: center;
-            color: white;
+            position: relative;
         }
         
         .cta h2 {
-            font-size: 42px;
+            font-size: 48px;
             margin-bottom: 20px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .cta p {
             font-size: 20px;
             margin-bottom: 40px;
-            opacity: 0.95;
+            color: rgba(255, 255, 255, 0.9);
         }
         
         .cta-buttons {
             display: flex;
             gap: 20px;
             justify-content: center;
+            flex-wrap: wrap;
         }
         
         /* Footer */
         footer {
             padding: 60px 20px 40px;
-            background: #1a1a1a;
-            color: white;
+            background: rgba(10, 10, 31, 0.9);
+            border-top: 1px solid rgba(100, 150, 255, 0.2);
+            position: relative;
         }
         
         .footer-content {
@@ -357,10 +586,11 @@
         
         .footer-column h3 {
             margin-bottom: 20px;
+            color: #667eea;
         }
         
         .footer-column a {
-            color: #aaa;
+            color: rgba(255, 255, 255, 0.6);
             text-decoration: none;
             display: block;
             margin-bottom: 10px;
@@ -368,14 +598,14 @@
         }
         
         .footer-column a:hover {
-            color: white;
+            color: #667eea;
         }
         
         .footer-bottom {
             text-align: center;
             padding-top: 30px;
-            border-top: 1px solid #333;
-            color: #aaa;
+            border-top: 1px solid rgba(100, 150, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
         }
         
         @keyframes fadeInUp {
@@ -386,6 +616,28 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
             }
         }
         
@@ -406,10 +658,66 @@
             .about-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: calc(100% - 60px);
+                left: 60px !important;
+            }
+            
+            .timeline-item::before {
+                left: -40px !important;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Animated Cosmic Background -->
+    <div class="cosmic-bg">
+        <div class="stars"></div>
+        <div class="nebula"></div>
+        <div class="molecules">
+            <div class="molecule" style="top: 10%; left: 10%; animation-delay: 0s;">
+                <svg viewBox="0 0 100 100">
+                    <circle cx="30" cy="30" r="8"/>
+                    <circle cx="70" cy="30" r="8"/>
+                    <circle cx="50" cy="60" r="8"/>
+                    <line x1="30" y1="30" x2="70" y2="30"/>
+                    <line x1="30" y1="30" x2="50" y2="60"/>
+                    <line x1="70" y1="30" x2="50" y2="60"/>
+                </svg>
+            </div>
+            <div class="molecule" style="top: 60%; left: 80%; animation-delay: 5s;">
+                <svg viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="10"/>
+                    <circle cx="25" cy="25" r="5"/>
+                    <circle cx="75" cy="25" r="5"/>
+                    <circle cx="25" cy="75" r="5"/>
+                    <circle cx="75" cy="75" r="5"/>
+                    <line x1="50" y1="50" x2="25" y2="25"/>
+                    <line x1="50" y1="50" x2="75" y2="25"/>
+                    <line x1="50" y1="50" x2="25" y2="75"/>
+                    <line x1="50" y1="50" x2="75" y2="75"/>
+                </svg>
+            </div>
+            <div class="molecule" style="top: 30%; left: 60%; animation-delay: 10s;">
+                <svg viewBox="0 0 100 100">
+                    <circle cx="50" cy="30" r="6"/>
+                    <circle cx="30" cy="50" r="6"/>
+                    <circle cx="70" cy="50" r="6"/>
+                    <circle cx="50" cy="70" r="6"/>
+                    <line x1="50" y1="30" x2="30" y2="50"/>
+                    <line x1="30" y1="50" x2="50" y2="70"/>
+                    <line x1="50" y1="70" x2="70" y2="50"/>
+                    <line x1="70" y1="50" x2="50" y2="30"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+
     <header>
         <nav>
             <div class="logo">🔬 DIU OS</div>
@@ -426,6 +734,8 @@
     </header>
 
     <section class="hero">
+        <div class="hero-bg-image"></div>
+        <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>The Scientific Operating System</h1>
             <p class="tagline">Where AI and Humans Collaborate as Equal Partners in Scientific Discovery</p>
@@ -450,24 +760,37 @@
             
             <div class="about-grid">
                 <div class="about-content">
-                    <h3>The Problem We're Solving</h3>
-                    <p>
-                        Current scientific research is fragmented across thousands of tools, platforms, and databases. 
-                        Researchers waste countless hours on repetitive tasks instead of focusing on discovery.
-                    </p>
-                    <p>
-                        AI is treated as a mere tool rather than a collaborative partner. Knowledge is locked behind 
-                        paywalls. Students lack access to advanced research environments.
-                    </p>
-                    <h3>Our Solution</h3>
-                    <p>
-                        DIU OS creates a unified scientific metaverse where AI agents and humans collaborate seamlessly. 
-                        Imagine having an AI colleague who can run experiments 24/7, analyze vast datasets, and even 
-                        generate novel hypotheses while you sleep.
-                    </p>
+                    <div class="glass-card">
+                        <h3>The Problem We're Solving</h3>
+                        <p>
+                            Current scientific research is fragmented across thousands of tools, platforms, and databases. 
+                            Researchers waste countless hours on repetitive tasks instead of focusing on discovery.
+                        </p>
+                        <p>
+                            AI is treated as a mere tool rather than a collaborative partner. Knowledge is locked behind 
+                            paywalls. Students lack access to advanced research environments.
+                        </p>
+                    </div>
+                    <div class="glass-card">
+                        <h3>Our Solution</h3>
+                        <p>
+                            DIU OS creates a unified scientific metaverse where AI agents and humans collaborate seamlessly. 
+                            Imagine having an AI colleague who can run experiments 24/7, analyze vast datasets, and even 
+                            generate novel hypotheses while you sleep.
+                        </p>
+                    </div>
                 </div>
                 <div class="about-image">
                     <img src="images/ai-colleague.jpg" alt="AI and Human Collaboration">
+                    <div class="floating-molecules">
+                        <svg viewBox="0 0 150 150">
+                            <circle cx="75" cy="75" r="20" fill="none" stroke="rgba(102, 126, 234, 0.5)" stroke-width="2"/>
+                            <circle cx="40" cy="40" r="10" fill="none" stroke="rgba(118, 75, 162, 0.5)" stroke-width="2"/>
+                            <circle cx="110" cy="40" r="10" fill="none" stroke="rgba(240, 147, 251, 0.5)" stroke-width="2"/>
+                            <line x1="75" y1="75" x2="40" y2="40" stroke="rgba(102, 126, 234, 0.3)" stroke-width="1"/>
+                            <line x1="75" y1="75" x2="110" y2="40" stroke="rgba(118, 75, 162, 0.3)" stroke-width="1"/>
+                        </svg>
+                    </div>
                 </div>
             </div>
         </div>
@@ -481,32 +804,32 @@
             </p>
             
             <div class="vision-cards">
-                <div class="vision-card">
+                <div class="vision-card glass-card">
                     <div class="vision-icon">🤖</div>
                     <h3>AI as Equal Partner</h3>
                     <p>AI agents that can design experiments, write papers, and make discoveries autonomously while collaborating with humans</p>
                 </div>
-                <div class="vision-card">
+                <div class="vision-card glass-card">
                     <div class="vision-icon">🌍</div>
                     <h3>Global Access</h3>
                     <p>Breaking down barriers so a student in rural Africa has the same research capabilities as someone at MIT</p>
                 </div>
-                <div class="vision-card">
+                <div class="vision-card glass-card">
                     <div class="vision-icon">⛓️</div>
                     <h3>Blockchain Attribution</h3>
                     <p>Immutable records of contributions ensuring fair credit and preventing plagiarism forever</p>
                 </div>
-                <div class="vision-card">
+                <div class="vision-card glass-card">
                     <div class="vision-icon">🔬</div>
                     <h3>Virtual Laboratories</h3>
                     <p>Conduct experiments in photorealistic VR/AR environments with real-time physics simulations</p>
                 </div>
-                <div class="vision-card">
+                <div class="vision-card glass-card">
                     <div class="vision-icon">📚</div>
                     <h3>Living Knowledge</h3>
                     <p>Scientific knowledge that updates in real-time as new discoveries are made anywhere in the world</p>
                 </div>
-                <div class="vision-card">
+                <div class="vision-card glass-card">
                     <div class="vision-icon">🎓</div>
                     <h3>Personalized Learning</h3>
                     <p>AI tutors that adapt to each student's learning style and pace, making science accessible to everyone</p>
@@ -516,39 +839,40 @@
     </section>
 
     <section class="features" id="features">
-        <div class="container">
-            <h2 class="section-title" style="color: white;">Platform Features</h2>
-            <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">
+        <div class="features-bg-image"></div>
+        <div class="container features-content">
+            <h2 class="section-title">Platform Features</h2>
+            <p class="section-subtitle">
                 Everything you need for next-generation scientific research
             </p>
             
             <div class="features-grid">
-                <div class="feature">
+                <div class="feature glass-card">
                     <div class="feature-icon">🔭</div>
                     <h3>Quantum Simulations</h3>
                     <p>Interactive 3D visualizations of quantum mechanics with real-time calculations</p>
                 </div>
-                <div class="feature">
+                <div class="feature glass-card">
                     <div class="feature-icon">🧬</div>
                     <h3>Multi-Discipline</h3>
                     <p>Physics, chemistry, biology, and more in one unified platform</p>
                 </div>
-                <div class="feature">
+                <div class="feature glass-card">
                     <div class="feature-icon">💬</div>
                     <h3>Natural Language</h3>
                     <p>Ask questions in plain English and get scientific answers instantly</p>
                 </div>
-                <div class="feature">
+                <div class="feature glass-card">
                     <div class="feature-icon">📊</div>
                     <h3>Real-Time Data</h3>
                     <p>Live streaming of experimental data with sub-100ms latency</p>
                 </div>
-                <div class="feature">
+                <div class="feature glass-card">
                     <div class="feature-icon">🏆</div>
                     <h3>Gamification</h3>
                     <p>Earn achievements and NFT certificates as you learn and discover</p>
                 </div>
-                <div class="feature">
+                <div class="feature glass-card">
                     <div class="feature-icon">🌐</div>
                     <h3>Open Source</h3>
                     <p>100% open source, community-driven, and free forever</p>
@@ -565,31 +889,31 @@
             </p>
             
             <div class="timeline">
-                <div class="timeline-item active">
+                <div class="timeline-item glass-card active">
                     <div class="timeline-date">Phase 0: Dec 2025 - Mar 2026</div>
                     <h3>Quantum Physics MVP</h3>
                     <p>Interactive 3D simulations, AI assistant, community building</p>
                 </div>
                 
-                <div class="timeline-item">
+                <div class="timeline-item glass-card">
                     <div class="timeline-date">Phase 1: Q2-Q3 2026</div>
                     <h3>Multi-Discipline Expansion</h3>
                     <p>Chemistry, biology modules, collaborative features, mobile apps</p>
                 </div>
                 
-                <div class="timeline-item">
+                <div class="timeline-item glass-card">
                     <div class="timeline-date">Phase 2: Q4 2026 - Q1 2027</div>
                     <h3>AI Research Partner</h3>
                     <p>Autonomous AI agents, hypothesis generation, virtual labs</p>
                 </div>
                 
-                <div class="timeline-item">
+                <div class="timeline-item glass-card">
                     <div class="timeline-date">Phase 3: 2027-2028</div>
                     <h3>Full Scientific OS</h3>
                     <p>Complete operating system, DAO governance, global research network</p>
                 </div>
                 
-                <div class="timeline-item">
+                <div class="timeline-item glass-card">
                     <div class="timeline-date">Vision: 2030+</div>
                     <h3>Scientific Singularity</h3>
                     <p>AI and humans making breakthrough discoveries daily, democratized science for all</p>
@@ -600,12 +924,14 @@
 
     <section class="cta">
         <div class="container">
-            <h2>Join the Scientific Revolution</h2>
-            <p>Be part of building the future of scientific discovery</p>
-            <div class="cta-buttons">
-                <a href="https://demo.diu-os.org" class="btn btn-primary">Try Demo</a>
-                <a href="/donate.html" class="btn btn-secondary">Support Project</a>
-                <a href="https://discord.gg/PKkzUkz82r" class="btn btn-secondary">Join Community</a>
+            <div class="glass-card">
+                <h2>Join the Scientific Revolution</h2>
+                <p>Be part of building the future of scientific discovery</p>
+                <div class="cta-buttons">
+                    <a href="https://demo.diu-os.org" class="btn btn-primary">Try Demo</a>
+                    <a href="/donate.html" class="btn btn-primary">Support Project</a>
+                    <a href="https://discord.gg/PKkzUkz82r" class="btn btn-secondary">Join Community</a>
+                </div>
             </div>
         </div>
     </section>
@@ -645,9 +971,9 @@
         <div class="footer-bottom">
             <p>© 2025 DIU OS Foundation | Building the Linux of Science</p>
             <p style="margin-top: 10px;">
-                <a href="https://diu-os.org" style="color: #aaa;">Foundation</a> | 
-                <a href="https://diu-os.com" style="color: #aaa;">Enterprise</a> | 
-                <a href="https://diu-os.dev" style="color: #aaa;">Developers</a>
+                <a href="https://diu-os.org" style="color: rgba(255,255,255,0.6);">Foundation</a> | 
+                <a href="https://diu-os.com" style="color: rgba(255,255,255,0.6);">Enterprise</a> | 
+                <a href="https://diu-os.dev" style="color: rgba(255,255,255,0.6);">Developers</a>
             </p>
         </div>
     </footer>
@@ -662,6 +988,49 @@
                 });
             });
         });
+
+        // Add floating molecules dynamically
+        function createMolecule() {
+            const moleculesContainer = document.querySelector('.molecules');
+            const molecule = document.createElement('div');
+            molecule.className = 'molecule';
+            molecule.style.left = Math.random() * 100 + '%';
+            molecule.style.top = Math.random() * 100 + '%';
+            molecule.style.animationDelay = Math.random() * 20 + 's';
+            molecule.style.animationDuration = (15 + Math.random() * 15) + 's';
+            
+            // Random molecule structure
+            const structures = [
+                `<svg viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="10"/>
+                    <circle cx="25" cy="50" r="5"/>
+                    <circle cx="75" cy="50" r="5"/>
+                    <line x1="25" y1="50" x2="75" y2="50"/>
+                </svg>`,
+                `<svg viewBox="0 0 100 100">
+                    <circle cx="30" cy="30" r="8"/>
+                    <circle cx="70" cy="70" r="8"/>
+                    <line x1="30" y1="30" x2="70" y2="70"/>
+                </svg>`,
+                `<svg viewBox="0 0 100 100">
+                    <circle cx="50" cy="25" r="6"/>
+                    <circle cx="25" cy="60" r="6"/>
+                    <circle cx="75" cy="60" r="6"/>
+                    <line x1="50" y1="25" x2="25" y2="60"/>
+                    <line x1="50" y1="25" x2="75" y2="60"/>
+                    <line x1="25" y1="60" x2="75" y2="60"/>
+                </svg>`
+            ];
+            
+            molecule.innerHTML = structures[Math.floor(Math.random() * structures.length)];
+            moleculesContainer.appendChild(molecule);
+            
+            // Remove molecule after animation
+            setTimeout(() => molecule.remove(), 30000);
+        }
+        
+        // Create molecules periodically
+        setInterval(createMolecule, 5000);
     </script>
 </body>
 </html>
