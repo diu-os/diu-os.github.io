@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DIU OS Technical Manifesto - IP Declaration</title>
+    <meta name="description" content="DIU OS Technical Manifesto establishing prior art and intellectual property declaration for the Scientific Operating System">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="DIU OS Technical Manifesto">
+    <meta property="og:description" content="Intellectual Property Declaration & Prior Art Establishment for DIU OS">
+    <meta property="og:image" content="https://diu-os.org/images/og-image.jpg">
+    <meta property="og:url" content="https://diu-os.org/manifesto.html">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            color: white;
+            line-height: 1.6;
+            background: #0a0a1f;
+            overflow-x: hidden;
+        }
+        
+        /* Animated Cosmic Background */
+        .cosmic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(to bottom, #0a0a1f 0%, #1a1a3e 50%, #0f0f2e 100%);
+            overflow: hidden;
+        }
+        
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #eee, transparent),
+                radial-gradient(2px 2px at 40px 70px, #ccc, transparent),
+                radial-gradient(1px 1px at 50px 50px, #ddd, transparent),
+                radial-gradient(1px 1px at 80px 10px, #fff, transparent),
+                radial-gradient(2px 2px at 130px 80px, #fff, transparent);
+            background-repeat: repeat;
+            background-size: 200px 200px;
+            animation: stars 120s linear infinite;
+            opacity: 0.8;
+        }
+        
+        .nebula {
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(ellipse at center, 
+                rgba(138, 43, 226, 0.1) 0%, 
+                rgba(30, 144, 255, 0.05) 40%, 
+                transparent 70%);
+            animation: nebula 200s ease-in-out infinite;
+        }
+        
+        @keyframes stars {
+            from { transform: translateX(0); }
+            to { transform: translateX(-200px); }
+        }
+        
+        @keyframes nebula {
+            0%, 100% { transform: rotate(0deg) scale(1); opacity: 0.3; }
+            50% { transform: rotate(180deg) scale(1.5); opacity: 0.5; }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(10, 10, 31, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: white;
+        }
+        
+        .btn-donate {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 8px 20px;
+            border-radius: 20px;
+            color: white !important;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        /* Glass Card Style */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 150px 20px 80px;
+        }
+        
+        .hero h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, #667eea 50%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 1s;
+        }
+        
+        .hero .tagline {
+            font-size: 22px;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.8);
+            animation: fadeInUp 1s 0.2s both;
+        }
+        
+        .badges {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+            animation: fadeInUp 1s 0.4s both;
+        }
+        
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(34, 197, 94, 0.2);
+            border: 1px solid rgba(34, 197, 94, 0.5);
+            color: #86efac;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .badge.orange {
+            background: rgba(251, 146, 60, 0.2);
+            border-color: rgba(251, 146, 60, 0.5);
+            color: #fdba74;
+        }
+        
+        .badge.blue {
+            background: rgba(102, 126, 234, 0.2);
+            border-color: rgba(102, 126, 234, 0.5);
+            color: #a5b4fc;
+        }
+        
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            font-size: 42px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Download Section */
+        .download-section {
+            padding: 80px 20px;
+        }
+        
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .download-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        
+        .download-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(102, 126, 234, 0.5);
+        }
+        
+        .download-card .icon {
+            font-size: 56px;
+            margin-bottom: 20px;
+        }
+        
+        .download-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .download-card p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .btn {
+            padding: 15px 35px;
+            font-size: 16px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        
+        /* Innovations Section */
+        .innovations-section {
+            padding: 80px 20px;
+        }
+        
+        .innovations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .innovation-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 35px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        
+        .innovation-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(118, 75, 162, 0.5);
+        }
+        
+        .innovation-card .number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .innovation-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #a5b4fc;
+        }
+        
+        .innovation-card p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        
+        /* Verification Section */
+        .verification-section {
+            padding: 80px 20px;
+        }
+        
+        .verification-content {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 50px;
+        }
+        
+        .code-block {
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 30px 0;
+            overflow-x: auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .code-block code {
+            color: #86efac;
+            font-family: 'Monaco', 'Fira Code', monospace;
+            font-size: 14px;
+            white-space: pre;
+            line-height: 1.8;
+        }
+        
+        .verification-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        /* Timeline Section */
+        .timeline-section {
+            padding: 80px 20px;
+        }
+        
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline-item {
+            display: flex;
+            gap: 25px;
+            align-items: flex-start;
+        }
+        
+        .timeline-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            flex-shrink: 0;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 25px;
+            border-radius: 15px;
+        }
+        
+        .timeline-content h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #a5b4fc;
+        }
+        
+        .timeline-content p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 15px;
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 60px 20px 40px;
+            margin-top: 80px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #667eea;
+        }
+        
+        .footer-column a {
+            display: block;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            margin-bottom: 12px;
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-bottom p {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero .tagline {
+                font-size: 18px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .badges {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .innovations-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cosmic-bg">
+        <div class="stars"></div>
+        <div class="nebula"></div>
+    </div>
+
+    <header>
+        <div class="logo">🔬 DIU OS</div>
+        <ul class="nav-links">
+            <li><a href="/#about">About</a></li>
+            <li><a href="/#vision">Vision</a></li>
+            <li><a href="/#features">Features</a></li>
+            <li><a href="/#roadmap">Roadmap</a></li>
+            <li><a href="https://github.com/diu-os">GitHub</a></li>
+            <li><a href="https://diu-os.dev">Developers</a></li>
+            <li><a href="/donate.html" class="btn-donate">💖 Donate</a></li>
+        </ul>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>📜 Technical Manifesto</h1>
+            <p class="tagline">Intellectual Property Declaration & Prior Art Establishment</p>
+            
+            <div class="badges">
+                <span class="badge">✅ Blockchain Timestamped</span>
+                <span class="badge orange">🔗 OpenTimestamps Verified</span>
+                <span class="badge blue">📄 Apache 2.0 License</span>
+            </div>
+        </section>
+
+        <section class="download-section">
+            <div class="container">
+                <h2 class="section-title">📥 Download Manifesto</h2>
+                <p class="section-subtitle">
+                    Access the complete technical documentation establishing prior art for DIU OS innovations
+                </p>
+                
+                <div class="download-grid">
+                    <div class="download-card">
+                        <div class="icon">📄</div>
+                        <h3>PDF Document</h3>
+                        <p>Complete manifesto with all technical details and IP declaration</p>
+                        <a href="https://github.com/diu-os/manifesto/releases/latest/download/DIU_OS_Manifesto_PUBLIC_v1.pdf" class="btn btn-primary">
+                            Download PDF
+                        </a>
+                    </div>
+                    
+                    <div class="download-card">
+                        <div class="icon">🔐</div>
+                        <h3>Blockchain Proof</h3>
+                        <p>OpenTimestamps .ots file for cryptographic verification</p>
+                        <a href="https://github.com/diu-os/manifesto/releases/latest/download/DIU_OS_Manifesto_PUBLIC_v1.pdf.ots" class="btn btn-secondary">
+                            Download .ots
+                        </a>
+                    </div>
+                    
+                    <div class="download-card">
+                        <div class="icon">📝</div>
+                        <h3>Editable Version</h3>
+                        <p>Microsoft Word format for reference and review</p>
+                        <a href="https://github.com/diu-os/manifesto/releases/latest/download/DIU_OS_Manifesto_PUBLIC_v1.docx" class="btn btn-secondary">
+                            Download DOCX
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="innovations-section">
+            <div class="container">
+                <h2 class="section-title">🚀 Protected Innovations</h2>
+                <p class="section-subtitle">
+                    Key technical innovations documented in the manifesto for prior art establishment
+                </p>
+                
+                <div class="innovations-grid">
+                    <div class="innovation-card">
+                        <span class="number">1</span>
+                        <h3>Real-time CDC Architecture</h3>
+                        <p>First DeSci platform implementing Change Data Capture with Supabase ETL for scientific simulations achieving &lt;100ms latency for all research operations.</p>
+                    </div>
+                    
+                    <div class="innovation-card">
+                        <span class="number">2</span>
+                        <h3>MCP-based AI Integration</h3>
+                        <p>Vendor-agnostic AI tutoring system using Model Context Protocol for physics education with custom MCP servers for simulations, knowledge base, and progress tracking.</p>
+                    </div>
+                    
+                    <div class="innovation-card">
+                        <span class="number">3</span>
+                        <h3>Interactive 3D Simulations</h3>
+                        <p>Three.js-powered quantum physics visualizations including double-slit experiment, quantum tunneling, and hydrogen atom orbitals with real-time parameter adjustment.</p>
+                    </div>
+                    
+                    <div class="innovation-card">
+                        <span class="number">4</span>
+                        <h3>Gamified Learning System</h3>
+                        <p>XP progression, achievements, leaderboards, and NFT certificates on Ethereum/Polygon for scientific education with task-based learning challenges.</p>
+                    </div>
+                    
+                    <div class="innovation-card">
+                        <span class="number">5</span>
+                        <h3>Plugin Architecture</h3>
+                        <p>Extensible framework enabling expansion to any scientific discipline through modular plugin system following Domain-Driven Design principles.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="verification-section">
+            <div class="container">
+                <h2 class="section-title">✅ Verify Blockchain Timestamp</h2>
+                <p class="section-subtitle">
+                    The manifesto is cryptographically timestamped on the Bitcoin blockchain via OpenTimestamps protocol
+                </p>
+                
+                <div class="verification-content">
+                    <div class="code-block">
+                        <code># Install OpenTimestamps client
+pip install opentimestamps-client
+
+# Download files from GitHub
+wget https://github.com/diu-os/manifesto/releases/latest/download/DIU_OS_Manifesto_PUBLIC_v1.pdf
+wget https://github.com/diu-os/manifesto/releases/latest/download/DIU_OS_Manifesto_PUBLIC_v1.pdf.ots
+
+# Verify the timestamp
+ots verify DIU_OS_Manifesto_PUBLIC_v1.pdf.ots
+
+# Expected output:
+# Success! Bitcoin block [NUMBER] attests document existed as of [DATE]</code>
+                    </div>
+                    
+                    <div class="verification-buttons">
+                        <a href="https://opentimestamps.org" target="_blank" class="btn btn-secondary">
+                            🌐 Verify Online
+                        </a>
+                        <a href="https://github.com/diu-os/manifesto" target="_blank" class="btn btn-primary">
+                            📂 View Repository
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <div class="container">
+                <h2 class="section-title">📅 Document Timeline</h2>
+                <p class="section-subtitle">
+                    Chronological record of manifesto creation and verification
+                </p>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-icon">📝</div>
+                        <div class="timeline-content">
+                            <h4>Document Creation</h4>
+                            <p>December 2025 — Initial manifesto drafted with complete technical specifications and IP declaration covering all core innovations.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🔗</div>
+                        <div class="timeline-content">
+                            <h4>Blockchain Timestamp</h4>
+                            <p>December 2025 — SHA-256 hash recorded via OpenTimestamps protocol, anchored to Bitcoin blockchain for immutable proof of existence.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-icon">📂</div>
+                        <div class="timeline-content">
+                            <h4>GitHub Publication</h4>
+                            <p>December 2025 — Public repository created with Release v1.0.0 establishing prior art in open source ecosystem.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🌐</div>
+                        <div class="timeline-content">
+                            <h4>Website Publication</h4>
+                            <p>December 2025 — Manifesto page added to official DIU OS website for public accessibility and discoverability.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h3>Platform</h3>
+                <a href="/#about">About</a>
+                <a href="/#vision">Vision</a>
+                <a href="/#features">Features</a>
+                <a href="/#roadmap">Roadmap</a>
+            </div>
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <a href="https://diu-os.dev">Documentation</a>
+                <a href="https://github.com/diu-os">GitHub</a>
+                <a href="https://demo.diu-os.org">Live Demo</a>
+                <a href="/manifesto.html">Manifesto</a>
+            </div>
+            <div class="footer-column">
+                <h3>Community</h3>
+                <a href="https://discord.gg/PKkzUkz82r">Discord</a>
+                <a href="https://twitter.com/diu_os">Twitter</a>
+                <a href="https://reddit.com/r/diuos">Reddit</a>
+                <a href="mailto:contact@diu-os.org">Contact</a>
+            </div>
+            <div class="footer-column">
+                <h3>Support</h3>
+                <a href="/donate.html">Donate</a>
+                <a href="https://github.com/sponsors/diu-os">GitHub Sponsors</a>
+                <a href="/contribute.html">Contribute</a>
+                <a href="/partners.html">Partners</a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2025 DIU OS Foundation | Building the Linux of Science</p>
+            <p style="margin-top: 10px;">
+                <a href="https://diu-os.org" style="color: rgba(255,255,255,0.6);">Foundation</a> | 
+                <a href="https://diu-os.com" style="color: rgba(255,255,255,0.6);">Enterprise</a> | 
+                <a href="https://diu-os.dev" style="color: rgba(255,255,255,0.6);">Developers</a>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
