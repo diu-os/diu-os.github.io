@@ -229,7 +229,7 @@ pub fn de_broglie_wavelength(momentum: f64) -> f64 {
 
 ### Get Help
 
-- **Discord**: [Join our community](https://discord.gg/diu-os)
+- **Discord**: [Join our community](https://discord.gg/rXQDgpgaW8)
 - **GitHub Discussions**: Ask questions and share ideas
 - **Issues**: Report bugs or request features
 
