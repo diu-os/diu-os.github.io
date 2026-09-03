@@ -1,456 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support DIU OS - Donations</title>
-    <meta name="description" content="Support the development of DIU OS - The Scientific Operating System">
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            min-height: 100vh;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        header {
-            padding: 20px 0;
-            background: rgba(0,0,0,0.1);
-            backdrop-filter: blur(10px);
-            margin-bottom: 40px;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: white;
-            text-decoration: none;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-        
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-        
-        h1 {
-            text-align: center;
-            font-size: 48px;
-            margin-bottom: 20px;
-            animation: fadeInUp 1s;
-        }
-        
-        .subtitle {
-            text-align: center;
-            font-size: 20px;
-            opacity: 0.9;
-            margin-bottom: 50px;
-            animation: fadeInUp 1s 0.2s both;
-        }
-        
-        .donation-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-        
-        .donation-card {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 30px;
-            animation: fadeInUp 1s 0.4s both;
-        }
-        
-        .crypto-name {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .crypto-icon {
-            width: 32px;
-            height: 32px;
-        }
-        
-        .address-box {
-            background: rgba(0,0,0,0.3);
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            word-break: break-all;
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
-            position: relative;
-        }
-        
-        .copy-btn {
-            background: white;
-            color: #667eea;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: transform 0.3s;
-            margin-top: 10px;
-        }
-        
-        .copy-btn:hover {
-            transform: scale(1.05);
-        }
-        
-        .copy-btn:active {
-            transform: scale(0.95);
-        }
-        
-        .qr-code {
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 15px;
-            display: inline-block;
-        }
-        
-        .progress-section {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 40px;
-            margin-bottom: 50px;
-        }
-        
-        .progress-bar {
-            background: rgba(0,0,0,0.3);
-            height: 30px;
-            border-radius: 15px;
-            overflow: hidden;
-            margin: 20px 0;
-        }
-        
-        .progress-fill {
-            background: linear-gradient(90deg, #4fc3f7, #29b6f6);
-            height: 100%;
-            width: 15%;
-            transition: width 0.5s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-        }
-        
-        .goals-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-        
-        .goal-card {
-            background: rgba(0,0,0,0.2);
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-        }
-        
-        .goal-amount {
-            font-size: 24px;
-            font-weight: bold;
-            color: #4fc3f7;
-        }
-        
-        .goal-description {
-            margin-top: 10px;
-            opacity: 0.9;
-        }
-        
-        .why-donate {
-            background: rgba(255,255,255,0.05);
-            border-radius: 20px;
-            padding: 40px;
-            margin-bottom: 50px;
-        }
-        
-        .why-donate h2 {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        
-        .why-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-        
-        .why-item {
-            text-align: center;
-        }
-        
-        .why-icon {
-            font-size: 48px;
-            margin-bottom: 15px;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 40px 0;
-            opacity: 0.8;
-        }
-        
-        .success-message {
-            display: none;
-            background: #4caf50;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 10px;
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 32px;
-            }
-            
-            .donation-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — DIU OS</title>
+  <meta name="description" content="Optional donations toward DIU OS hosting and development. Platform source is not published.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #0a0a1a; --text: #e8e6e3; --muted: #9a968f; --border: #2a2a3a; --accent: #2dd4bf; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: "IBM Plex Sans", sans-serif; font-weight: 200; background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 42rem; margin: 0 auto; padding: 1.5rem 1.25rem; }
+    .brand { font-family: "JetBrains Mono", monospace; font-weight: 700; color: var(--text); text-decoration: none; }
+    h1 { font-weight: 200; font-size: 2rem; margin: 2.5rem 0 1rem; }
+    h2 { font-weight: 700; font-size: 1rem; margin: 2rem 0 0.75rem; }
+    p, li { color: var(--muted); margin: 0.6rem 0; }
+    ul { padding-left: 1.1rem; }
+    code, .mono { font-family: "JetBrains Mono", monospace; font-size: 0.85em; }
+    .addr {
+      display: block;
+      margin: 0.4rem 0 1rem;
+      padding: 0.65rem 0.75rem;
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.8rem;
+      word-break: break-all;
+    }
+    footer { border-top: 1px solid var(--border); margin-top: 3rem; }
+    footer p { font-size: 0.8rem; }
+  </style>
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <a href="https://diu-os.org" class="logo">🔬 DIU OS</a>
-            <ul class="nav-links">
-                <li><a href="https://diu-os.org">Home</a></li>
-                <li><a href="https://github.com/diu-os">GitHub</a></li>
-                <li><a href="https://diu-os.com">Platform</a></li>
-                <li><a href="mailto:contact@diu-os.org">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <div class="wrap">
+    <a class="brand" href="/">DIU OS</a>
+    <h1>Support</h1>
+    <p>Optional donations go toward hosting and independent development of <a href="https://diu-os.com">diu-os.com</a>.</p>
+    <p>DIU OS is Scientific Compute Infrastructure — not EdTech and not a DeSci protocol. Public artifacts (manifesto, Sepolia contracts) are under <a href="https://github.com/diu-os">github.com/diu-os</a>. Platform source is private. Donations are not a claim that every line of code is open, and this page is not a registered-charity statement.</p>
 
-    <div class="container">
-        <h1>Support DIU OS Development</h1>
-        <p class="subtitle">Help us build the future of scientific discovery</p>
+    <h2>Addresses</h2>
+    <p>Ethereum / Polygon / Arbitrum (ETH, USDC, USDT, DAI as each network allows)</p>
+    <code class="addr">0x7e2Ccc6769c4d1f2d97AbAad40d5887F30e27763</code>
+    <p>Bitcoin (native SegWit)</p>
+    <code class="addr">bc1q4kmka07z94hx47z4quwpujrttfpgl8uv4nhpv5</code>
 
-        <div class="progress-section">
-            <h2>Current Funding Goal: Phase 0 Launch</h2>
-            <div class="progress-bar">
-                <div class="progress-fill">$750 / $5,000</div>
-            </div>
-            <div class="goals-grid">
-                <div class="goal-card">
-                    <div class="goal-amount">✅ $100</div>
-                    <div class="goal-description">Domain names secured</div>
-                </div>
-                <div class="goal-card">
-                    <div class="goal-amount">$500</div>
-                    <div class="goal-description">Cloud infrastructure</div>
-                </div>
-                <div class="goal-card">
-                    <div class="goal-amount">$1,000</div>
-                    <div class="goal-description">Security audit</div>
-                </div>
-                <div class="goal-card">
-                    <div class="goal-amount">$5,000</div>
-                    <div class="goal-description">Full-time development</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="donation-grid">
-            <div class="donation-card">
-                <div class="crypto-name">
-                    <span>⟠</span> Ethereum (ETH)
-                </div>
-                <div class="address-box" id="eth-address">
-                    0x7e2Ccc6769c4d1f2d97AbAad40d5887F30e27763
-                </div>
-                <button class="copy-btn" onclick="copyAddress('eth')">📋 Copy Address</button>
-                <p style="margin-top: 15px; opacity: 0.9;">
-                    Also accepts: USDC, USDT, DAI on Ethereum network
-                </p>
-            </div>
-
-            <div class="donation-card">
-                <div class="crypto-name">
-                    <span>🟣</span> Polygon (MATIC)
-                </div>
-                <div class="address-box" id="polygon-address">
-                    0x7e2Ccc6769c4d1f2d97AbAad40d5887F30e27763
-                </div>
-                <button class="copy-btn" onclick="copyAddress('polygon')">📋 Copy Address</button>
-                <p style="margin-top: 15px; opacity: 0.9;">
-                    Lower fees! Also accepts: USDC, USDT on Polygon
-                </p>
-            </div>
-
-            <div class="donation-card">
-                <div class="crypto-name">
-                    <span>🔵</span> Arbitrum
-                </div>
-                <div class="address-box" id="arbitrum-address">
-                    0x7e2Ccc6769c4d1f2d97AbAad40d5887F30e27763
-                </div>
-                <button class="copy-btn" onclick="copyAddress('arbitrum')">📋 Copy Address</button>
-                <p style="margin-top: 15px; opacity: 0.9;">
-                    Fast & cheap! Accepts: ETH, USDC on Arbitrum
-                </p>
-            </div>
-
-            <div class="donation-card">
-                <div class="crypto-name">
-                    <span>🟠</span> Bitcoin (BTC)
-                </div>
-                <div class="address-box" id="btc-address">
-                    bc1q4kmka07z94hx47z4quwpujrttfpgl8uv4nhpv5
-                </div>
-                <button class="copy-btn" onclick="copyAddress('btc')">📋 Copy Address</button>
-                <p style="margin-top: 15px; opacity: 0.9;">
-                    Native SegWit address for lower fees
-                </p>
-            </div>
-        </div>
-
-        <div class="why-donate">
-            <h2>Why Support DIU OS?</h2>
-            <div class="why-grid">
-                <div class="why-item">
-                    <div class="why-icon">🌍</div>
-                    <h3>100% Open Source</h3>
-                    <p>Every line of code is open and free forever</p>
-                </div>
-                <div class="why-item">
-                    <div class="why-icon">🎓</div>
-                    <h3>Education First</h3>
-                    <p>Making science accessible to everyone</p>
-                </div>
-                <div class="why-item">
-                    <div class="why-icon">🤝</div>
-                    <h3>Community Driven</h3>
-                    <p>Built by scientists, for scientists</p>
-                </div>
-                <div class="why-item">
-                    <div class="why-icon">🚀</div>
-                    <h3>No VC Funding</h3>
-                    <p>Independent and community-supported</p>
-                </div>
-            </div>
-        </div>
-
-        <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; margin-bottom: 40px;">
-            <h2 style="text-align: center; margin-bottom: 20px;">💎 Top Supporters</h2>
-            <div style="text-align: center; opacity: 0.8;">
-                <p>Be the first to support DIU OS!</p>
-                <p style="margin-top: 10px;">Donors of $100+ will be listed here</p>
-            </div>
-        </div>
-
-        <div style="text-align: center; opacity: 0.9; margin: 40px 0;">
-            <h3>Other Ways to Support</h3>
-            <p style="margin-top: 15px;">
-                ⭐ Star our repositories on <a href="https://github.com/diu-os" style="color: #4fc3f7;">GitHub</a><br>
-                🔄 Share the project with your network<br>
-                💬 Join our <a href="https://discord.gg/rXQDgpgaW8" style="color: #4fc3f7;">Discord community</a><br>
-                🔧 Contribute code or documentation
-            </p>
-        </div>
+    <h2>Other support</h2>
+    <ul>
+      <li>Read the <a href="https://github.com/diu-os/manifesto">manifesto</a> and <a href="https://github.com/diu-os/diu-contracts">contracts</a></li>
+      <li>Use the platform at <a href="https://diu-os.com">diu-os.com</a></li>
+      <li>Questions: <a href="mailto:contact@diu-os.org">contact@diu-os.org</a></li>
+    </ul>
+  </div>
+  <footer>
+    <div class="wrap">
+      <p>© 2026 DIU OS. Public artifacts: manifesto Apache-2.0, contracts MIT. Platform source is not in this organization.</p>
     </div>
-
-    <footer>
-        <div class="container">
-            <p>All donations are used for development, infrastructure, and community growth</p>
-            <p style="margin-top: 10px;">DIU OS is a non-profit open source project</p>
-            <p style="margin-top: 20px;">
-                <a href="https://diu-os.org" style="color: white; text-decoration: none;">diu-os.org</a> | 
-                <a href="https://github.com/diu-os" style="color: white; text-decoration: none;">GitHub</a> | 
-                <a href="mailto:contact@diu-os.org" style="color: white; text-decoration: none;">Contact</a>
-            </p>
-        </div>
-    </footer>
-
-    <div class="success-message" id="successMessage">
-        Address copied to clipboard!
-    </div>
-
-    <script>
-        function copyAddress(type) {
-            let address;
-            switch(type) {
-                case 'eth':
-                case 'polygon':
-                case 'arbitrum':
-                    address = '0x7e2Ccc6769c4d1f2d97AbAad40d5887F30e27763';
-                    break;
-                case 'btc':
-                    address = 'bc1q4kmka07z94hx47z4quwpujrttfpgl8uv4nhpv5';
-                    break;
-            }
-            
-            navigator.clipboard.writeText(address).then(function() {
-                const successMsg = document.getElementById('successMessage');
-                successMsg.style.display = 'block';
-                setTimeout(() => {
-                    successMsg.style.display = 'none';
-                }, 3000);
-            });
-        }
-        
-        // Update progress bar based on actual donations
-        // This would connect to your backend in production
-        function updateProgress(current, goal) {
-            const percentage = (current / goal) * 100;
-            document.querySelector('.progress-fill').style.width = percentage + '%';
-            document.querySelector('.progress-fill').textContent = `$${current} / $${goal}`;
-        }
-    </script>
+  </footer>
 </body>
 </html>
