@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navier–Stokes claim — DIU OS</title>
+  <meta name="description" content="A local Lean rebuild of OpenAI’s public Navier–Stokes artifact. No GitHub Actions run. The Clay case stays inconclusive.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,800&family=IBM+Plex+Sans:wght@200;400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root { --bg: #0a0a1a; --text: #e8e6e3; --muted: #9a968f; --border: #2a2a3a; --accent: #2dd4bf; --surface: #12121f; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: "IBM Plex Sans", sans-serif; font-weight: 200; background: var(--bg); color: var(--text); line-height: 1.6; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    header, footer { border-color: var(--border); border-style: solid; }
+    header { border-bottom-width: 1px; }
+    footer { border-top-width: 1px; margin-top: 4rem; }
+    .wrap { max-width: 42rem; margin: 0 auto; padding: 1.5rem 1.25rem 4rem; }
+    .brand { font-family: "JetBrains Mono", monospace; font-weight: 700; }
+    nav { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    nav ul { display: flex; gap: 1.1rem; list-style: none; font-size: 0.875rem; flex-wrap: wrap; }
+    nav a { color: var(--muted); }
+    h1 { font-family: Fraunces, serif; font-weight: 800; font-size: 2.3rem; line-height: 1.15; margin: 2.2rem 0 1rem; }
+    h2 { font-weight: 700; font-size: 1.15rem; margin: 2.2rem 0 0.75rem; }
+    p { margin: 0.6rem 0; }
+    .lede { color: var(--muted); }
+    .card { background: var(--surface); border: 1px solid var(--border); padding: 0.9rem 1rem; margin: 0.6rem 0; }
+    .mono, code, pre { font-family: "JetBrains Mono", monospace; }
+    pre { background: var(--surface); border: 1px solid var(--border); padding: 0.9rem 1rem; overflow-x: auto; font-size: 0.78rem; font-weight: 400; margin: 0.75rem 0; }
+    ul, ol { padding-left: 1.2rem; }
+    li { margin: 0.35rem 0; }
+    footer p { color: var(--muted); font-size: 0.8rem; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <nav>
+        <a class="brand" href="index.html">DIU OS</a>
+        <ul>
+          <li><a href="https://diu-os.com/#/claims/navier-stokes">Full record</a></li>
+          <li><a href="https://github.com/diu-os/manifesto">Manifesto</a></li>
+          <li><a href="https://diu-os.com/#/about">Constitution</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <h1>Navier–Stokes, 8 September 2026</h1>
+    <p class="lede">
+      OpenAI published a note and a Lean formalization that it says establishes Clay statements C and D.
+      DIU OS rebuilt that public artifact on one pinned revision.
+      The case stays <strong>inconclusive</strong>. A status on one layer is not the status of the case.
+    </p>
+
+    <h2>Why this page exists</h2>
+    <p>
+      DIU OS uses the tools OpenAI published with this claim: Lean 4, Lake, and the public repository.
+      The page does not set out to refute the proof, and it does not adopt the headline.
+    </p>
+    <p>
+      The <a href="https://github.com/diu-os/manifesto">manifesto</a> states the rule.
+      What is computed is a checkable status of a claim — relative to explicit assumptions, the model, the computation, and the evidence.
+      “Truth is computed, not asserted” names that mission. It does not stamp a run as true.
+    </p>
+    <p>
+      A gene is where that rule becomes an object someone else can rerun: the equation, the source, what the model leaves out, and one check.
+      This record is the same discipline applied to a claim we did not write.
+      <a href="https://diu-os.com/#/about">Constitution §1.1 and §1.2</a>.
+    </p>
+
+    <h2>Why there are four statements</h2>
+    <p>
+      The Clay problem, in Charles Fefferman’s
+      <a href="https://www.claymath.org/wp-content/uploads/2022/06/navierstokes.pdf">official statement</a>,
+      asks for a proof of one of four alternatives. Any one of them meets the problem as written.
+      An external force does not make C or D a different problem: the statement lists them.
+    </p>
+    <div class="card"><strong>(A) Whole space, no external force.</strong> A smooth solution with finite energy exists for all time.</div>
+    <div class="card"><strong>(B) Periodic torus, no external force.</strong> A smooth solution exists for all time.</div>
+    <div class="card"><strong>(C) Whole space, a smooth force is allowed.</strong> There exist smooth data and a smooth force for which no such global solution exists.</div>
+    <div class="card"><strong>(D) Periodic torus, a smooth force is allowed.</strong> There exist smooth periodic data and a smooth force for which no global smooth solution exists.</div>
+    <p class="lede">
+      The independent challenge text
+      (<a href="https://github.com/google-deepmind/formal-conjectures/blob/1cbcb19ad0a0b0e0833abd7529c3cb794e721e8c/FormalConjectures/Millennium/NavierStokes.lean">Google DeepMind, pin 1cbcb19a</a>)
+      says the same thing in Lean. On that pin, A and B still carry <span class="mono">sorry</span> and are marked research-open.
+      OpenAI’s repository also contains a finite-time singularity for the Euler equation, which has no viscosity.
+      Euler is not one of the four Navier–Stokes statements.
+    </p>
+    <p class="lede">
+      The analytical note describes a fluid that starts at rest, under a smooth force, with kinetic energy staying finite, while the maximum speed becomes unbounded as time approaches 1.
+      The authors assign the whole-space result to C and the periodic corollary to D.
+      This page does not re-derive that construction.
+    </p>
+
+    <h2>How the check was run</h2>
+    <ol>
+      <li>
+        <strong>Pin the bytes.</strong>
+        Checkout <span class="mono">f9e8bc5b38b6e212696e8a30e3e91517af887bbd</span>.
+        Toolchain <a href="https://github.com/leanprover/lean4/releases/tag/v4.34.0-rc2">leanprover/lean4:v4.34.0-rc2</a>.
+        Mathlib <a href="https://github.com/leanprover-community/mathlib4/commit/85e3a25e006c35636f0e53b0e9296caca2685bc0">85e3a25e006c35636f0e53b0e9296caca2685bc0</a>.
+        The challenge citation one commit behind this pin is <span class="mono">8937a8f4cbc7abaab5e9e97d1cc7f5d2319d9538</span>.
+      </li>
+      <li>
+        <strong>Read the sources before trusting a grep.</strong>
+        On 18 September a line scan found no tactical <span class="mono">sorry</span> in <span class="mono">NavierStokes/</span> or <span class="mono">Euler/</span>,
+        four intentional placeholders in <span class="mono">ComparatorChallenges/</span>,
+        and no added <span class="mono">axiom</span>, <span class="mono">native_decide</span>, or <span class="mono">unsafe</span>.
+      </li>
+      <li>
+        <strong>Compare definitions with the challenge text.</strong>
+        The C and D wording and the eleven shared definitions match that file textually.
+        Elaborated types of those definitions matched byte for byte on the same machine.
+        The project’s Comparator exporter was not run.
+      </li>
+      <li>
+        <strong>Rebuild with the checker the authors publish.</strong>
+        On 19 September, operator Bakhtiyor Ruzimatov, one x86 Linux workstation:
+        <span class="mono">lake build NavierStokes Euler</span>,
+        <span class="mono">LEAN_NUM_THREADS=2</span>,
+        about 4 hours 47 minutes,
+        11421 jobs,
+        exit code 0.
+      </li>
+    </ol>
+    <p>
+      Earlier the same day, a build of the statement targets only
+      (<span class="mono">lake build NavierStokes.ComparatorDefinitions ComparatorChallenges.NavierStokes</span>)
+      finished 8764 jobs. Wall-clock time for that pass was not written down.
+    </p>
+    <p>
+      The rebuild did not call a language model. No token count was measured, and none is reported.
+      Announced figures for agents and tokens are the authors’ statement.
+      The repository has no trace of them, so they are not entered here as a result of this check.
+    </p>
+
+    <h2>What the kernel printed</h2>
+    <pre>NavierStokes.Comparator.navier_stokes_breakdown_R3
+  axioms: propext, Classical.choice, Quot.sound
+NavierStokes.Comparator.navier_stokes_breakdown_periodic
+  axioms: propext, Classical.choice, Quot.sound
+Euler.euler_breakdown_R3
+  axioms: propext, Classical.choice, Quot.sound
+Euler.exists_compact_smooth_euler_singularity
+  axioms: propext, Classical.choice, Quot.sound</pre>
+    <p>
+      Those three names are Lean’s standard logical basis. They are not an extra axiom that the Navier–Stokes claim is true.
+      Derivability of these four names does not transfer to Fefferman’s prose, to a Clay decision, or to the credit dispute.
+    </p>
+
+    <h2>Where the code is, and where it is not</h2>
+    <p>
+      The Lean sources stay in
+      <a href="https://github.com/openai/NavierStokesAndEuler/tree/f9e8bc5b38b6e212696e8a30e3e91517af887bbd">openai/NavierStokesAndEuler at this pin</a>.
+      This site does not copy them.
+    </p>
+    <p>
+      There is <strong>no GitHub Actions run</strong> and no GitHub Release of this check.
+      The builder log was a local file and is not retained.
+      A run number that does not exist is not evidence.
+    </p>
+    <p class="lede">A third party repeats the rebuild from the public pin:</p>
+    <pre>git clone https://github.com/openai/NavierStokesAndEuler.git
+cd NavierStokesAndEuler
+git checkout f9e8bc5b38b6e212696e8a30e3e91517af887bbd
+lake build NavierStokes Euler</pre>
+
+    <h2>What stays open</h2>
+    <ul>
+      <li>Whether the Lean statement is Fefferman’s statement. Comparator was not run. That reading needs people, not another exit code.</li>
+      <li>Clay’s recognition. The Institute looks after peer-reviewed publication and further community vetting. OpenAI says it does not intend to claim the prize.</li>
+      <li>Credit, private sessions, and the search trace. Those records are not in the repository. Nature reported the dispute on <a href="https://www.nature.com/articles/d41586-026-02910-w">17 September 2026</a>.</li>
+    </ul>
+    <p>
+      The layer-by-layer vector, including what 8Braid and others published, is on
+      <a href="https://diu-os.com/#/claims/navier-stokes">diu-os.com/#/claims/navier-stokes</a>.
+    </p>
+
+    <h2>Sources</h2>
+    <ul>
+      <li><a href="https://openai.com/index/navier-stokes-solution/">OpenAI, 8 Sep 2026</a></li>
+      <li><a href="https://github.com/openai/NavierStokesAndEuler/tree/f9e8bc5b38b6e212696e8a30e3e91517af887bbd">Repository at the reviewed pin</a></li>
+      <li><a href="https://www.nature.com/articles/d41586-026-02842-5">Nature, 8 Sep 2026</a></li>
+      <li><a href="https://www.nature.com/articles/d41586-026-02910-w">Nature, 17 Sep 2026</a></li>
+      <li><a href="https://www.claymath.org/millennium-problems/navier-stokes-equation/">Clay Mathematics Institute</a></li>
+      <li><a href="https://www.claymath.org/wp-content/uploads/2022/06/navierstokes.pdf">Fefferman, official statement (PDF)</a></li>
+      <li><a href="https://github.com/google-deepmind/formal-conjectures/blob/1cbcb19ad0a0b0e0833abd7529c3cb794e721e8c/FormalConjectures/Millennium/NavierStokes.lean">Independent challenge text</a></li>
+      <li><a href="https://github.com/diu-os/manifesto">DIU OS manifesto</a></li>
+      <li><a href="https://8braid.com/journal/openai-navier-stokes-proof-meets-a-new-kind-of-database">8Braid</a></li>
+    </ul>
+  </main>
+  <footer>
+    <div class="wrap">
+      <p>© 2026 DIU OS. This page records a local rebuild. It is not a Clay decision and not a GitHub Actions artifact.</p>
+    </div>
+  </footer>
+</body>
+</html>

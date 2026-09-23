@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DIU OS — Scientific Compute Infrastructure</title>
-  <meta name="description" content="Public artifacts for DIU OS. The platform runs at diu-os.com. This site is the open showcase: manifesto and Stylus contracts.">
+  <title>DIU OS — Charter</title>
+  <meta name="description" content="DIU OS is the Decentralized Intelligent Universe Operating System. This site is the charter: manifesto, constitution §1.1–§1.2, and the public kernel.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,800&family=IBM+Plex+Sans:wght@200;400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #0a0a1a;
@@ -15,6 +15,7 @@
       --muted: #9a968f;
       --border: #2a2a3a;
       --accent: #2dd4bf;
+      --surface: #12121f;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -27,33 +28,36 @@
     }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
-    header, footer {
-      border-color: var(--border);
-      border-style: solid;
-    }
+    header, footer { border-color: var(--border); border-style: solid; }
     header { border-bottom-width: 1px; }
     footer { border-top-width: 1px; margin-top: 4rem; }
     .wrap { max-width: 42rem; margin: 0 auto; padding: 1.5rem 1.25rem; }
     .brand { font-family: "JetBrains Mono", monospace; font-weight: 700; letter-spacing: 0.04em; }
-    nav { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
-    nav ul { display: flex; gap: 1.25rem; list-style: none; font-size: 0.875rem; }
+    nav { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    nav ul { display: flex; gap: 1.25rem; list-style: none; font-size: 0.875rem; flex-wrap: wrap; }
     nav a { color: var(--muted); }
-    h1 { font-weight: 200; font-size: 2.25rem; margin: 3rem 0 1rem; }
-    .lede { color: var(--muted); margin-bottom: 2rem; }
-    .cta { display: flex; flex-wrap: wrap; gap: 0.75rem; margin: 2rem 0 3rem; }
-    .btn {
-      display: inline-block;
-      padding: 0.65rem 1.1rem;
+    h1 { font-family: Fraunces, serif; font-weight: 800; font-size: 2.4rem; line-height: 1.15; margin: 2.5rem 0 1rem; }
+    h2 { font-weight: 700; font-size: 1.05rem; margin: 2.25rem 0 0.75rem; }
+    .lede { color: var(--muted); margin-bottom: 1rem; }
+    .slogan { font-family: Fraunces, serif; font-weight: 800; font-size: 1.35rem; margin: 1.5rem 0 0.75rem; }
+    .card {
+      background: var(--surface);
       border: 1px solid var(--border);
-      color: var(--text);
-      font-weight: 400;
+      padding: 1rem 1.1rem;
+      margin: 0.75rem 0;
     }
-    .btn-primary { background: var(--accent); color: #042f2e; border-color: var(--accent); font-weight: 700; }
-    .btn:hover { text-decoration: none; opacity: 0.92; }
-    h2 { font-weight: 700; font-size: 1rem; margin: 2rem 0 0.75rem; letter-spacing: 0.02em; }
-    ul.list { padding-left: 1.1rem; color: var(--muted); }
-    ul.list li { margin: 0.4rem 0; }
+    ul.list, ol.list { padding-left: 1.2rem; }
+    ul.list li, ol.list li { margin: 0.35rem 0; }
     code, .mono { font-family: "JetBrains Mono", monospace; font-size: 0.85em; }
+    pre {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.8rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0.9rem 1rem;
+      overflow-x: auto;
+      margin: 0.75rem 0 1rem;
+    }
     footer p { color: var(--muted); font-size: 0.8rem; }
   </style>
 </head>
@@ -64,42 +68,133 @@
         <span class="brand">DIU OS</span>
         <ul>
           <li><a href="https://diu-os.com">Platform</a></li>
+          <li><a href="https://diu-os.dev">Gene</a></li>
+          <li><a href="https://github.com/diu-os/diu-kernel">Kernel</a></li>
           <li><a href="https://github.com/diu-os/manifesto">Manifesto</a></li>
-          <li><a href="https://github.com/diu-os/diu-contracts">Contracts</a></li>
-          <li><a href="https://github.com/diu-os">GitHub</a></li>
         </ul>
       </nav>
     </div>
   </header>
   <main class="wrap">
-    <h1>Scientific compute infrastructure</h1>
+    <h1>Decentralized Intelligent Universe Operating System</h1>
     <p class="lede">
-      DIU OS is infrastructure for building, running, and sealing scientific modules.
-      It is not EdTech and not a DeSci protocol. The product is
-      <a href="https://diu-os.com">diu-os.com</a>. This domain is the public showcase.
+      DIU OS is the Decentralized Intelligent Universe Operating System.
+      Intelligent names the I. Decentralized names an architecture.
+      This domain is the charter. The instrument is
+      <a href="https://diu-os.com">diu-os.com</a>.
     </p>
-    <div class="cta">
-      <a class="btn btn-primary" href="https://diu-os.com">Open the platform</a>
-      <a class="btn" href="https://diu-os.com/#/sim/pre_big_bang_explorer">Flagship simulation</a>
-      <a class="btn" href="https://diu-os.com/#/demo">Demo walkthrough</a>
+    <p class="slogan">Truth is computed, not asserted.</p>
+    <p class="lede">
+      What is computed is a checkable status of a claim — relative to explicit
+      assumptions, the model, the computation, and the evidence.
+      The slogan names the mission. It does not stamp a run as true.
+    </p>
+
+    <h2>Three sites, one idea</h2>
+    <div class="card">
+      <p><a href="https://diu-os.com">diu-os.com</a> — the instrument. Look, record a run, or order a check.</p>
+      <p><span class="mono">diu-os.org</span> — this charter.</p>
+      <p><a href="https://diu-os.dev">diu-os.dev</a> — how to check a <span class="mono">gene.json</span> against the kernel.</p>
     </div>
-    <h2>What is public</h2>
+
+    <h2>For a scientist</h2>
+    <p>Papers arrive faster than anyone can check them. A headline is not a check.</p>
+    <p class="lede">
+      A gene is the claim a colleague can rerun. On
+      <a href="https://diu-os.com">diu-os.com</a>
+      a recorded run keeps a digest, and the server rebuilds the CSV or refuses the file.
+      Looking and recording are free. You pay when the check is not already on the shelf:
+      a gene for your equation, or a dossier on a public claim.
+      The estimate is written within 48 hours. There is no subscription.
+    </p>
+
+    <h2>Manifesto</h2>
+    <p class="lede">
+      <a href="https://github.com/diu-os/manifesto">github.com/diu-os/manifesto</a>
+      — epistemic charter, Apache-2.0. Living text: <span class="mono">MANIFESTO.md</span>.
+      PDF v1.0.0 (Dec 2025) is a prior-art snapshot of an earlier stack. It is not the product.
+    </p>
+
+    <h2>§1.1 Truthfulness is the mission</h2>
+    <p>DIU OS exists to maximize truthfulness.</p>
+    <p class="lede">It does not exist to maximize how interesting a result is, how fast a conclusion arrives, how many papers are produced, or how satisfied a user feels.</p>
+    <p>Trading truthfulness for any of those is a breach of this constitution.</p>
+    <p class="lede">Truthfulness here is the mission. It is not a stamp on an empirical run. What a run receives is a checkable status, relative to stated assumptions, the model, the computation, and the evidence.</p>
+    <p class="lede">These two sections are the public statement of constitution §1.1 and §1.2. The remaining parts are not on this page. The same text is on <a href="https://diu-os.com/#/about">diu-os.com/#/about</a>.</p>
+
+    <h2>§1.2 What counts as evidence</h2>
+    <p>The following count as evidence, in this order.</p>
+    <ol class="list">
+      <li>A reproducible experiment.</li>
+      <li>Formally verified mathematics.</li>
+      <li>An independent replication.</li>
+      <li>A statistical consensus, which has weight and is not final.</li>
+    </ol>
+    <p>The following do not count as evidence.</p>
     <ul class="list">
-      <li><a href="https://github.com/diu-os/manifesto">manifesto</a> — epistemic charter (Apache-2.0). Living text: <span class="mono">MANIFESTO.md</span>. PDF v1.0.0 (Dec 2025) is a prior-art snapshot.</li>
-      <li><a href="https://github.com/diu-os/diu-contracts">diu-contracts</a> — Arbitrum Stylus contracts on <strong>Sepolia testnet</strong> (MIT). Not a live mirror of the commercial workspace.</li>
+      <li>The authority of a scientist, an institution, or an AI system.</li>
+      <li>The beauty of a theory.</li>
+      <li>Mathematical elegance without experimental support.</li>
+      <li>Consensus that has not been reproduced.</li>
     </ul>
-    <h2>What is not published here</h2>
+
+    <h2>Kernel</h2>
+    <p class="lede">
+      <a href="https://github.com/diu-os/diu-kernel">diu-kernel</a> is Apache-2.0.
+      The pin is git tag <span class="mono">v0.1.0</span>
+      (commit <span class="mono">2cdda70eb3c69918e5c6e9d90817617c0387e935</span>).
+      GitHub’s Releases page lists no release asset.
+      The crate checks a gene passport. It does not run the scientific model, and it is not the platform.
+    </p>
+    <pre>git clone https://github.com/diu-os/diu-kernel.git
+cd diu-kernel
+git checkout v0.1.0
+cargo test</pre>
+
+    <h2>Contracts</h2>
+    <p class="lede">
+      <a href="https://github.com/diu-os/diu-contracts">diu-contracts</a> — Arbitrum Stylus on <strong>Sepolia testnet</strong> (MIT).
+      A showcase snapshot, not a live mirror of the commercial workspace.
+    </p>
+
+    <h2>Specimen</h2>
+    <p class="lede">
+      <a href="navier-stokes.html">Navier–Stokes, 8 September 2026</a>
+      — why Clay lists four statements, how the local Lean rebuild was run, and why there is no GitHub Actions number for it.
+      The same record, with the layer vector, is on
+      <a href="https://diu-os.com/#/claims/navier-stokes">diu-os.com</a>.
+      The case is inconclusive.
+    </p>
+
+    <h2>Which license comes first</h2>
+    <p>Apache-2.0 and MIT cover different trees. They are not two bids for the same code.</p>
+    <p class="lede">
+      Apache-2.0 is the license of the open core: the kernel and the manifesto.
+      It is the one that matters when another lab links the checker.
+      It keeps attribution, a NOTICE, and a patent grant.
+      MIT stays on the contract snapshot, where it already ships.
+      MIT on those contracts does not open the kernel.
+      Apache-2.0 on the kernel does not open the platform.
+    </p>
     <ul class="list">
-      <li>Platform source (API, frontend, engines) lives in a private commercial repository.</li>
-      <li>Developer docs, MCP servers, and a public SDK are not shipped. <a href="https://diu-os.dev">diu-os.dev</a> is a placeholder.</li>
-      <li>No mainnet deployment. No NFT certificates. No VR/AR labs.</li>
+      <li><strong>Kernel and manifesto — Apache-2.0.</strong> Digest, Gate 1, the epistemic vocabulary, and the charter.</li>
+      <li><strong>Contract snapshot — MIT.</strong> Stylus contracts on Arbitrum Sepolia. A showcase, not the live platform.</li>
+      <li><strong>Platform — unpublished.</strong> API, frontend, engines, server-side gene executors, production configuration.</li>
     </ul>
+
+    <h2>Closed</h2>
+    <ul class="list">
+      <li>Platform source (API, frontend, engines) stays in a private repository.</li>
+      <li>No mainnet deployment. No public SDK. No NFT certificates. No VR/AR labs.</li>
+      <li><a href="https://github.com/diu-os/diu-docs">diu-docs</a> is not an API and not a documentation tree.</li>
+    </ul>
+
     <h2>Contact</h2>
     <p class="lede"><a href="mailto:contact@diu-os.org">contact@diu-os.org</a></p>
   </main>
   <footer>
     <div class="wrap">
-      <p>© 2026 DIU OS. Public artifacts: manifesto Apache-2.0, contracts MIT. Platform source is not in this organization.</p>
+      <p>© 2026 DIU OS. Kernel and manifesto Apache-2.0. Contracts MIT. Platform source is not in this organization.</p>
     </div>
   </footer>
 </body>
