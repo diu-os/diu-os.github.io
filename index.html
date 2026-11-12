@@ -143,14 +143,15 @@
     <h2>Kernel</h2>
     <p class="lede">
       <a href="https://github.com/diu-os/diu-kernel">diu-kernel</a> is Apache-2.0.
-      The pin is git tag <span class="mono">v0.1.0</span>
-      (commit <span class="mono">2cdda70eb3c69918e5c6e9d90817617c0387e935</span>).
-      GitHub’s Releases page lists no release asset.
+      The pin is git tag <span class="mono">v0.2.0</span>
+      (commit <span class="mono">d490c537132fdad5cc9887b34d587163188a5952</span>), also on crates.io.
+      To check a gene passport without cloning: <span class="mono">cargo install diu-cli</span>
+      (<a href="https://github.com/diu-os/diu-cli">diu-cli</a>, Apache-2.0).
       The crate checks a gene passport. It does not run the scientific model, and it is not the platform.
     </p>
     <pre>git clone https://github.com/diu-os/diu-kernel.git
 cd diu-kernel
-git checkout v0.1.0
+git checkout v0.2.0
 cargo test</pre>
 
     <h2>Contracts</h2>
@@ -187,7 +188,7 @@ cargo test</pre>
     <h2>Closed</h2>
     <ul class="list">
       <li>Platform source (API, frontend, engines) stays in a private repository.</li>
-      <li>No mainnet deployment. No public SDK. No NFT certificates. No VR/AR labs.</li>
+      <li>No mainnet deployment. No public HTTP API. No NFT certificates. No VR/AR labs.</li>
       <li><a href="https://github.com/diu-os/diu-docs">diu-docs</a> is not an API and not a documentation tree.</li>
     </ul>
 
